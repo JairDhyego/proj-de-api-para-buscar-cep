@@ -5,7 +5,7 @@ Tava procurando alguns projetos no youtube e vi um muito incrivel e pensei "por 
 Eu quero terminar ainda a funcionalidade do botão de salvar, para guardar os dados em algum lugar.
 
 ## Link para o projeto:
-https://roaring-arithmetic-5dcc01.netlify.app
+https://proj-de-api-para-buscar-de-cep.vercel.app
 
 ## tecnologias.
 Foi usado o framework react com a linguagem type script, e styled components nesse projeto.
