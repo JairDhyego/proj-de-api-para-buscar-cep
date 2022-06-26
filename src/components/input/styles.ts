@@ -16,10 +16,11 @@ export const Container = styled.div`
     display: inline;
     margin-bottom: 0.4rem;
     color: var(--colorPrimary);
-  }
+    transition: all 0.4s;
 
-  input::placeholder {
-    color: var(--colorPrimary);
-    padding-left: 8px;
+    &::placeholder {
+      color: var(--colorPrimary);
+      padding-left: 8px;
+    }
   }
 `;

@@ -1,11 +1,5 @@
+import { Props } from "../../types/type";
 import * as C from "./styles";
-
-interface Props {
-  placeholder: string;
-  value: string;
-  onChange: any;
-  onBlur?: any;
-}
 
 function Input({ placeholder, value, onChange, onBlur }: Props) {
   return (

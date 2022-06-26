@@ -1,6 +1,7 @@
 import * as C from "./styles";
 import Input from "./../../components/input/index";
-import { ChangeEvent, useState, useEffect, SetStateAction } from "react";
+import { ChangeEvent, useState } from "react";
+import { propsEndereco } from "../../types/type";
 
 function Endereco() {
   const [cep, setCep] = useState("");
@@ -10,20 +11,30 @@ function Endereco() {
   const [cidade, setCidade] = useState("");
   const [estado, setEstado] = useState("");
 
+  const cepValido = (cep: string) => cep.length === 8;
   const pesquisarCep = async () => {
     const entradaCep = cep;
     const url = `http://viacep.com.br/ws/${entradaCep}/json/`;
-    const dados = await fetch(url);
-    const response = await dados.json();
-    preencherFormulario(response);
+    if (cepValido(cep)) {
+      const dados = await fetch(url);
+      const response = await dados.json();
+      if (response.hasOwnProperty("erro")) {
+        zerarDados();
+        setLocal("Endereço não encontrado!");
+        return;
+      }
+      preencherFormulario(response);
+    } else {
+      setLocal("CEP invalido!");
+    }
   };
 
-  interface propsEndereco {
-    logradouro: string;
-    bairro: string;
-    localidade: string;
-    uf: string;
-  }
+  const zerarDados = () => {
+    setLocal("");
+    setBairro("");
+    setCidade("");
+    setEstado("");
+  };
 
   const preencherFormulario = (endereco: propsEndereco) => {
     setLocal(endereco.logradouro);
