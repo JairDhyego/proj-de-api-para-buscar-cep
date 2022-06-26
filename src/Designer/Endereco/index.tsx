@@ -14,18 +14,15 @@ function Endereco() {
   const pesquisarCep = async () => {
     const entradaCep = cep;
     const url = `http://viacep.com.br/ws/${entradaCep}/json/`;
-    if (cepValido(cep)) {
-      const dados = await fetch(url);
-      const response = await dados.json();
-      if (response.hasOwnProperty("erro")) {
-        zerarDados();
-        setLocal("Endereço não encontrado!");
-        return;
-      }
-      preencherFormulario(response);
-    } else {
-      setLocal("CEP invalido!");
+
+    const dados = await fetch(url);
+    const response = await dados.json();
+    if (response.hasOwnProperty("erro")) {
+      zerarDados();
+      setLocal("Endereço não encontrado!");
+      return;
     }
+    preencherFormulario(response);
   };
 
   const preencherFormulario = (endereco: propsEndereco) => {
@@ -41,8 +38,6 @@ function Endereco() {
     setCidade("");
     setEstado("");
   };
-
-  const cepValido = (cep: string) => cep.length === 8;
 
   return (
     <C.Container>
