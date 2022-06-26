@@ -11,7 +11,6 @@ function Endereco() {
   const [cidade, setCidade] = useState("");
   const [estado, setEstado] = useState("");
 
-  const cepValido = (cep: string) => cep.length === 8;
   const pesquisarCep = async () => {
     const entradaCep = cep;
     const url = `http://viacep.com.br/ws/${entradaCep}/json/`;
@@ -29,6 +28,13 @@ function Endereco() {
     }
   };
 
+  const preencherFormulario = (endereco: propsEndereco) => {
+    setLocal(endereco.logradouro);
+    setBairro(endereco.bairro);
+    setCidade(endereco.localidade);
+    setEstado(endereco.uf);
+  };
+
   const zerarDados = () => {
     setLocal("");
     setBairro("");
@@ -36,12 +42,7 @@ function Endereco() {
     setEstado("");
   };
 
-  const preencherFormulario = (endereco: propsEndereco) => {
-    setLocal(endereco.logradouro);
-    setBairro(endereco.bairro);
-    setCidade(endereco.localidade);
-    setEstado(endereco.uf);
-  };
+  const cepValido = (cep: string) => cep.length === 8;
 
   return (
     <C.Container>
