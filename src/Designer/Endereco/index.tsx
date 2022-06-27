@@ -13,7 +13,7 @@ function Endereco() {
 
   const pesquisarCep = async () => {
     const entradaCep = cep;
-    const url = `http://viacep.com.br/ws/${entradaCep}/json/`;
+    const url = `https://viacep.com.br/ws/${entradaCep}/json/`;
     if (cepValido(cep)) {
       const dados = await fetch(url);
       const response = await dados.json();
